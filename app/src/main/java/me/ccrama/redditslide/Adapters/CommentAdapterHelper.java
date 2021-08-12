@@ -628,7 +628,7 @@ public class CommentAdapterHelper {
                     .getQuantityString(R.plurals.mod_btn_reports, reportCount, reportCount));
         }
 
-        if (SettingValues.toolboxEnabled) {
+        if (PreferenceHelper.toolboxEnabled()) {
             b.sheet(24, note, mContext.getString(R.string.mod_usernotes_view));
         }
 
@@ -696,7 +696,7 @@ public class CommentAdapterHelper {
                         removeComment(mContext, holder, comment, adapter, false);
                         break;
                     case 7:
-                        if (SettingValues.removalReasonType == SettingValues.RemovalReasonType.TOOLBOX.ordinal()
+                        if (PreferenceHelper.isRemovalReasonTypeToolbox()
                                 && ToolboxUI.canShowRemoval(comment.getSubredditName())) {
                             ToolboxUI.showRemoval(mContext, comment, new ToolboxUI.CompletedRemovalCallback() {
                                 @Override

@@ -549,7 +549,7 @@ public class ModeratorAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                     .getQuantityString(R.plurals.mod_btn_reports, reportCount, reportCount));
         }
 
-        if (SettingValues.toolboxEnabled) {
+        if (PreferenceHelper.toolboxEnabled()) {
             b.sheet(24, note, mContext.getString(R.string.mod_usernotes_view));
         }
 
@@ -599,7 +599,7 @@ public class ModeratorAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                         removeComment(mContext, holder, comment, false);
                         break;
                     case 7:
-                        if (SettingValues.removalReasonType == SettingValues.RemovalReasonType.TOOLBOX.ordinal()
+                        if (PreferenceHelper.isRemovalReasonTypeToolbox()
                                 && ToolboxUI.canShowRemoval(comment.getSubredditName())) {
                             ToolboxUI.showRemoval(mContext, comment, new ToolboxUI.CompletedRemovalCallback() {
                                 @Override
