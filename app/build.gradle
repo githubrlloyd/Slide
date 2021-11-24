@@ -1,7 +1,18 @@
 plugins {
+    id "com.guardsquare.appsweep" version "0.1.5"
     id 'com.gladed.androidgitversion' version '0.4.14'
     id 'com.github.ben-manes.versions' version '0.39.0'
     id 'com.android.application'
+}
+
+String getAppSweepApiKey() {
+   def propFile = rootProject.file("./local.properties")
+   def properties = new Properties()
+   properties.load(new FileInputStream(propFile))
+   return properties['APPSWEEP_API_KEY']
+}
+appsweep {
+   apiKey getAppSweepApiKey()
 }
 
 android {
