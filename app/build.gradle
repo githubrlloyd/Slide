@@ -5,20 +5,19 @@ plugins {
     id 'com.android.application'
 }
 
-String getAppSweepApiKey() {
-   def propFile = rootProject.file("./local.properties")
-   def properties = new Properties()
-   properties.load(new FileInputStream(propFile))
-   return properties['APPSWEEP_API_KEY']
-}
-appsweep {
-   apiKey getAppSweepApiKey()
-}
-
 android {
     compileSdkVersion 29
     buildToolsVersion "30.0.3"
-
+    
+    String getAppSweepApiKey() {
+        def propFile = rootProject.file("./local.properties")
+        def properties = new Properties()
+        properties.load(new FileInputStream(propFile))
+        return properties['APPSWEEP_API_KEY']
+    }
+    appsweep {
+        apiKey getAppSweepApiKey()
+    }
     defaultConfig {
         applicationId "me.ccrama.redditslide"
         minSdkVersion 16
